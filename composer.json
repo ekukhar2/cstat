@@ -1,0 +1,14 @@
+{
+    "name": "evgen/cstat",
+    "description": "laravel 5 page statistic",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yevhen Kukhar",
+            "email": "ekukhar2@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
