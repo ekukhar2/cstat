@@ -29,8 +29,9 @@ class Cstat
         if($this->routeName){
             $this->sesid=Session::getId();
             $this->timestamp=time();
-            $this->request_uri=urldecode($_SERVER['REQUEST_URI']);
-            if($this->request_uri=='/')$this->request_uri='main';
+            //$this->request_uri=urldecode($_SERVER['REQUEST_URI']);
+            //if($this->request_uri=='/')$this->request_uri='/main';
+            $this->request_uri=$this->routeName;
             $this->remote_addr=$_SERVER['REMOTE_ADDR'];
             $this->checkDataInTableCstatcounter();
             $this->updateCstatcounterAlluser();
@@ -124,21 +125,10 @@ class Cstat
         return Cstatcounter::all();
     }
     public function getCstatinsite(){
-        //return Cstatinsite::all()->toJson();
-        return Cstatinsite::all();
+        return Cstatinsite::orderBy('times', 'desc')->get();
     }
     public function getCstatvisitors(){
-        //return Cstatinsite::all()->toJson();
-        return Cstatvisitors::all();
-    }
-/////////////////////////////////////////
-    public function getUri(){
-        return Session::getId();
-    }
-    public static function saySomething() {
-        //return trans('cstat::messages.greeting');
-        //return config('cstat.message');
-        return  Carbon::now('Europe/Kiev');
+        return Cstatvisitors::orderBy('id', 'desc')->get();
     }
 
 }//end class
