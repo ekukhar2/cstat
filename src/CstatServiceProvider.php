@@ -21,6 +21,7 @@ class CstatServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/migrations/' =>database_path('migrations')], 'migrations');
         $this->publishes([__DIR__.'/seeds/' =>database_path('seeds')], 'seeds');
         $this->publishes([__DIR__.'/Middleware/' =>base_path('App/Http/Middleware')]);
+        $this->publishes([__DIR__.'/assets/' =>public_path('vendor/cstat')]);
     }
 
     /**
