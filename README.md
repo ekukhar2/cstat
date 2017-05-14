@@ -1,5 +1,6 @@
+<p>
 1) Create folder "eugen"(or other name) in folder "vendor". Copy source "cstat" to folder "vendor/eugen"
-
+</p>
 2) Open your Laravel 5 application’s composer.json file and look for the "autoload" section. In "psr-4" insert the location to your package:
 "autoload": {
 "classmap": [
