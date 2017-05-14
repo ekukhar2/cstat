@@ -1,6 +1,8 @@
-<p>
-1) Create folder "eugen"(or other name) in folder "vendor". Copy source "cstat" to folder "vendor/eugen"
-</p>
+1) Create folder "eugen"(or other name) in folder "vendor". Copy source "cstat" to folder "vendor/eugen" or<br>
+create folder "cstat" and clone from git:<br>
+git init<br>
+git pull https://github.com/ekukhar2/cstat.git<br>
+<br>
 2) Open your Laravel 5 application’s composer.json file and look for the "autoload" section. In "psr-4" insert the location to your package:<br>
 "autoload": {<br>
 "classmap": [<br>
@@ -40,11 +42,24 @@ protected $middleware = [<br>
 ];<br>
 <br>
 5) Run in command line:<br>
+composer dump-autoload<br>
 php artisan vendor:publish<br>
 php artisan migrate<br>
 php artisan make:seeder CstatcounterSeeder<br>
 php artisan db:seed --class=CstatcounterSeeder<br>
 <br>
-6) Run in command line:<br>
-composer dump-autoload<br>
+6)You must also specify route names for collect page stats<br>
+in web.php:<br>
+Route::get('/', 'HomeController@index')->name('Home'); - will be working<br>
+Route::post('/user', 'HomeController@update'); - will be skipped<br>
+<br>
+6) go to the link:<br>
+your.site/cstat<br>
+<br>
+<br>
+PS: If you wish protect cstat - go to the<br>
+vendor/eugen/cstat/src/Controllers/CstatController.php<br>
+and uncomment line<br>
+//$this->middleware('auth');<br>
+<br>
 
