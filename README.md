@@ -39,12 +39,12 @@ protected $middleware = [
 \Illuminate\Session\Middleware\StartSession::class,
 ];
 
-5) Run in command line:
-php artisan vendor:publish
-php artisan migrate
-php artisan make:seeder CstatcounterSeeder
-php artisan db:seed --class=CstatcounterSeeder
+5) Run in command line:<br>
+php artisan vendor:publish<br>
+php artisan migrate<br>
+php artisan make:seeder CstatcounterSeeder<br>
+php artisan db:seed --class=CstatcounterSeeder<br>
 
-6) Run in command line:
+6) Run in command line:<br>
 composer dump-autoload
 
