@@ -35,7 +35,15 @@ class CstatServiceProvider extends ServiceProvider
         // View
         $this->loadViewsFrom(__DIR__ . '/Views', 'cstat');
         $this->app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware('Illuminate\Session\Middleware\StartSession');
+        /*
+         * old version vor laravel 5.3
+         */
+        /*
         $this->app['cstat'] = $this->app->share(function($app) {
+            return new Cstat;
+        });
+        */
+        $this->app['cstat'] = $this->app->singleton(\Eugen\Cstat\CstatServiceProvider::class,function($app) {
             return new Cstat;
         });
     }
