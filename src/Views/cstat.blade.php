@@ -120,7 +120,7 @@
                 </thead>
 
                 @foreach($datas['counterinsite'] as $data)
-                    <tr><td align="center">{{gethostbyaddr($data->remote)}}</td><td align="center">{{$data->self}}</td><td align="center">{{$data->created_at}}</td><td align="center">{{$data->remote}}</td></tr>
+                    <tr><td align="center">{{($data->remote)}}</td><td align="center">{{$data->self}}</td><td align="center">{{$data->created_at}}</td><td align="center">{{$data->remote}}</td></tr>
                 @endforeach
             </table>
             <hr>
@@ -131,7 +131,7 @@
                 </thead>
 
                 @foreach($datas['countervisitors'] as $data)
-                    <tr><td align="center">{{gethostbyaddr($data->remote)}}</td><td align="center">{{$data->self}}</td><td align="center">{{\Carbon\Carbon::createFromTimestamp($data->id)->toDateTimeString()}}</td><td align="center">{{$data->remote}}</td></tr>
+                    <tr><td align="center">{{($data->remote)}}</td><td align="center">{{$data->self}}</td><td align="center">{{\Carbon\Carbon::createFromTimestamp($data->id)->toDateTimeString()}}</td><td align="center">{{$data->remote}}</td></tr>
                 @endforeach
             </table>
 

@@ -11,7 +11,6 @@ namespace Eugen\Cstat\Models;
 use Illuminate\Database\Eloquent\Model;
 class Cstatvisitors extends Model {
     protected $table = 'cstat_visitors';
-    public $fillable = ['id','remote','self','country','countrycode'];
+    public $fillable = ['id','remote','self','country','countrycode','timestamp'];
     public $incrementing = false;
-    public $timestamps = false;
 }

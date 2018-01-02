@@ -23,15 +23,18 @@ class Cstat
     public $tz='Europe/Kiev';
     public $timestamp;
     public $visitorsTimeLive=3600;//time in seconds
+    public $visitorsid;
     public $sesid;
     public function __construct(){
         $this->routeName = \Route::currentRouteName();
         if($this->routeName){
             $this->sesid=Session::getId();
+            $this->visitorsid=rand();
             $this->timestamp=time();
-            //$this->request_uri=urldecode($_SERVER['REQUEST_URI']);
-            //if($this->request_uri=='/')$this->request_uri='/main';
-            $this->request_uri=$this->routeName;
+            //echo rand();
+            $this->request_uri=urldecode($_SERVER['REQUEST_URI']);
+            if($this->request_uri=='/')$this->request_uri='/main';
+            //$this->request_uri=$this->routeName;
             $this->remote_addr=$_SERVER['REMOTE_ADDR'];
             $this->checkDataInTableCstatcounter();
             $this->updateCstatcounterAlluser();
@@ -53,7 +56,7 @@ class Cstat
 
     }
     public function isertVisitors(){
-        $data = Cstatvisitors::firstOrCreate(['id' => $this->timestamp,'remote'=>$this->remote_addr,'self'=>$this->request_uri]);
+        $data = Cstatvisitors::firstOrCreate(['id' => $this->visitorsid,'remote'=>$this->remote_addr,'self'=>$this->request_uri]);
     }
     public function updateCstatcounterAlluser(){
 
@@ -101,7 +104,7 @@ class Cstat
     public function clearVisitors(){
         $datas = Cstatvisitors::all();
         foreach ($datas as $data) {
-            $res=$this->timestamp-$data->id;
+            $res=$this->timestamp - $data->created_at->timestamp;
             if($res>=$this->visitorsTimeLive)Cstatvisitors::where('id', $data->id)->delete();
         }
     }

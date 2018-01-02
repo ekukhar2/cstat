@@ -27,6 +27,7 @@ class CreateTableCstatPageCounter extends Migration
             $table->text('self')->nullable();
             $table->string('country',50)->nullable();
             $table->string('countrycode',10)->nullable();
+            $table->timestamps();
         });
         Schema::create('cstat_insite', function (Blueprint $table) {
             $table->string('id')->unique();
