@@ -113,7 +113,7 @@
                 @endforeach
             </table>
             <hr>
-            <h3>Відвідувачі онлайн: </h3>
+            <h3>Відвідувачі онлайн: {{count($datas['counterinsite'])}}</h3>
             <table class="table table-striped table-bordered bootstrap-datatable datatable">
                 <thead>
                 <tr><td align="center"><strong>Назва сервера</strong></td><td  align="center"><strong>Назва сторінки</strong></td><td  align="center"><strong>Час заходу</strong></td><td  align="center"><strong>Ip:</strong></td></tr>
@@ -124,7 +124,7 @@
                 @endforeach
             </table>
             <hr>
-            <h3>Відвідувачі за годину: </h3>
+            <h3>Відвідувачі за годину: {{count($datas['countervisitors'])}}</h3>
             <table class="table table-striped table-bordered bootstrap-datatable datatable">
                 <thead>
                 <tr><td align="center"><strong>Назва сервера</strong></td><td  align="center"><strong>Назва сторінки</strong></td><td  align="center"><strong>Час заходу</strong></td><td  align="center"><strong>Ip:</strong></td></tr>
