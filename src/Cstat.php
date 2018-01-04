@@ -28,7 +28,7 @@ class Cstat
     public function __construct(){
         $this->routeName = \Route::currentRouteName();
         if($this->routeName){
-            $this->sesid=Session::getId();
+            $this->sesid=session_id();
             $this->visitorsid=rand();
             $this->timestamp=time();
             //echo rand();
@@ -131,7 +131,7 @@ class Cstat
         return Cstatinsite::orderBy('times', 'desc')->get();
     }
     public function getCstatvisitors(){
-        return Cstatvisitors::orderBy('id', 'desc')->get();
+        return Cstatvisitors::orderBy('created_at', 'desc')->get();
     }
 
 }//end class
