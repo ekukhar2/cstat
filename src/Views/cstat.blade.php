@@ -8,7 +8,7 @@
                 Графік статистики за останніх 30 днів по загальним та унікальним відвідувачам<br>
                 Дата реєстрації: {!! $datas['counterinitialdata'] !!}
             </h3>
-            <canvas id="tutorial" width="620" height="350"></canvas>
+            <canvas id="tutorial" width="620" height="400"></canvas>
             <script type="text/javascript">
                 function draw() {
                     var last30DaysArray={!! $datas['last30Days'] !!};
@@ -26,8 +26,8 @@
                         //глініі координат
                         ctx.beginPath();
                         ctx.moveTo(20, 0);
-                        ctx.lineTo(20, 300);
-                        ctx.lineTo(600, 300);
+                        ctx.lineTo(20, 350);
+                        ctx.lineTo(600, 350);
                         ctx.stroke();
 
                         //штрих-лінії по горизонталі + дні
@@ -36,11 +36,11 @@
                         ctx.beginPath();
                         for(i=20;i<610;i+=20)
                         {
-                            ctx.moveTo(i, 310);
-                            ctx.lineTo(i, 300);
+                            ctx.moveTo(i, 360);
+                            ctx.lineTo(i, 350);
                             if(last30DaysArray[c]==undefined)day='';
                             else day=last30DaysArray[c];
-                            ctx.fillText(day, (i-5), 320);
+                            ctx.fillText(day, (i-5), 370);
                             c++;
                         }
                         ctx.stroke();
@@ -49,7 +49,7 @@
                         var z=0;
                         var k={!! $datas['k'] !!} // коефіцієнт
                                 ctx.beginPath();
-                        for(i=300;i>=0;i-=50)
+                        for(i=350;i>=0;i-=50)
                         {
                             ctx.fillText(z, 0, (i+10));
                             ctx.moveTo(18,i);
@@ -64,14 +64,14 @@
                         //загальні відвідувачі
                         ctx.beginPath();
                         var nn=AllDaysArray.x1.length;
-                        ctx.moveTo(AllDaysArray.x1[0],AllDaysArray.y1[0]);
+                        ctx.moveTo(AllDaysArray.x1[0],AllDaysArray.y1[0]+50);
                         for(i=0;i<nn;i++)
                         {
-                            ctx.fillText(AllDaysArray.alldays[i], AllDaysArray.x1[i], AllDaysArray.y1[i]);
-                            ctx.lineTo(AllDaysArray.x1[i],AllDaysArray.y1[i]);
-                            ctx.lineTo(AllDaysArray.x2[i],AllDaysArray.y2[i]);
+                            ctx.fillText(AllDaysArray.alldays[i], AllDaysArray.x1[i], AllDaysArray.y1[i]+50);
+                            ctx.lineTo(AllDaysArray.x1[i],AllDaysArray.y1[i]+50);
+                            ctx.lineTo(AllDaysArray.x2[i],AllDaysArray.y2[i]+50);
                         }
-                        ctx.fillText(AllDaysArray.alldays[nn], AllDaysArray.x2[nn-1], AllDaysArray.y2[nn-1]);
+                        ctx.fillText(AllDaysArray.alldays[nn], AllDaysArray.x2[nn-1], AllDaysArray.y2[nn-1]+50);
                         ctx.strokeStyle = 'rgb(223,25,67)';
                         ctx.stroke();
                         //console.log(AllDaysArray.x2[nn-1]);
@@ -82,17 +82,19 @@
                         ctx.moveTo(UniDaysArray.x1[0],UniDaysArray.y1[0]);
                         for(i=0;i<nn;i++)
                         {
-                            ctx.fillText(UniDaysArray.unidays[i], UniDaysArray.x1[i], UniDaysArray.y1[i]);
-                            ctx.lineTo(UniDaysArray.x1[i],UniDaysArray.y1[i]);
-                            ctx.lineTo(UniDaysArray.x2[i],UniDaysArray.y2[i]);
+                            ctx.fillText(UniDaysArray.unidays[i], UniDaysArray.x1[i], (UniDaysArray.y1[i]+50));
+                            ctx.lineTo(UniDaysArray.x1[i],UniDaysArray.y1[i]+50);
+                            ctx.lineTo(UniDaysArray.x2[i],UniDaysArray.y2[i]+50);
                         }
-                        ctx.fillText(UniDaysArray.unidays[nn], UniDaysArray.x2[nn-1], UniDaysArray.y2[nn-1]);
+                        ctx.fillText(UniDaysArray.unidays[nn], UniDaysArray.x2[nn-1], UniDaysArray.y2[nn-1]+50);
                         ctx.strokeStyle = 'rgb(65,140,107)';
                         ctx.stroke();
                     }
                 }
                 draw();
             </script>
+            <h4>Зараз онлайн: {{count($datas['counterinsite'])}},
+            Відвідувачі за годину: {{count($datas['countervisitors'])}}</h4>
             <h3>Відвідуваність по сторінкам: </h3>
             <table class="table table-striped table-bordered bootstrap-datatable datatable">
                 <thead>
