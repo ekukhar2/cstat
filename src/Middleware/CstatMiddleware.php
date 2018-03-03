@@ -15,6 +15,7 @@ class CstatMiddleware
      */
     public function handle($request, Closure $next)
     {
+        session_start();
         $cstat=new Cstat();
         return $next($request);
     }
