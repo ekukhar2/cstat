@@ -46,7 +46,7 @@ class CstatController extends Controller {
                 $max=$max-30;
             }while ($max>0);
 
-        $n=count($last30Days);//к-сть днів для відображення якщо менше 30
+        $n=@count($last30Days);//к-сть днів для відображення якщо менше 30
         if($n){
             $y=350;
             $x=620;
